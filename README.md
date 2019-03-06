@@ -53,9 +53,42 @@ streams.source.topic.nodes.user-track=action{*}
 bin/neo4j console
 ```
 
-* Access Neo4j Browser via http://localhost:7474
+* Access Neo4j Browser via http://localhost:7474. Connect to database with neo4j/neo4j and update new password later.
 
-Connect to database with neo4j/neo4j and update new password later.
+## Create Web UI
 
+* Install AngularJs and Angular Material:
+``` html
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+<script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.css" />
+```
+
+* Install Neo4j client:
+``` html
+<script src="js/neo4j-web.min.js"></script>
+```
+
+* Connect to neo4j server:
+``` js
+neo4j = neo4j.v1;
+var driver = neo4j.driver('bolt://127.0.0.1:7687', neo4j.auth.basic('neo4j', '123456'));
+var session = driver.session();
+```
+
+* Create a record:
+``` js
+var query = `CREATE (n:action {userId: '${USER_ID}', type: '${type}'})`;
+var result = session.run(query);
+result.then(function(data) {
+    console.log(data);
+}, function(e) {
+    console.log(e)
+});
+```
 
 
