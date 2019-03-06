@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.css" />
+    <script src="js/neo4j-web.min.js"></script>
+    <script src="js/app-2.js"></script>
+</head>
+<body>
+    <div ng-controller="AppCtrl as self" ng-app="MyApp"
+        layout="row" layout-fill
+        layout-align="center center">
+        <md-button class="md-accent" ng-click="self.test('import')">import</md-button>
+        <md-button class="md-raised" ng-click="self.test('export')">export</md-button>
+        <md-button class="md-raised md-primary" ng-click="self.test('create')">create</md-button>
+    </div>
+</body>
+</html>
