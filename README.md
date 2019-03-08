@@ -28,6 +28,7 @@ sh bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic user-
 ```
 
 * Create multiple server:
+
 Change `broker.id` and `log.dirs` in `server.properties`
 
 
