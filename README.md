@@ -27,6 +27,10 @@ sh bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 
 sh bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic user-track --from-beginning
 ```
 
+* Create multiple server:
+Change `broker.id` and `log.dirs` in `server.properties`
+
+
 ### Neo4j
 
 * Edit `config/neo4j.conf`, add content below:
