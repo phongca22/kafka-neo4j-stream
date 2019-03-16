@@ -1,8 +1,9 @@
 # kafka-neo4j-stream
 
 ## Install
-* Kafka 2.1.0 https://www.apache.org/dyn/closer.cgi?path=/kafka/2.1.0/kafka_2.11-2.1.0.tgz
-* Neo4j Community Edition 3.4.12 https://neo4j.com/download-center/
+* Kafka 2.1.0 and Zookeeper included https://www.apache.org/dyn/closer.cgi?path=/kafka/2.1.0/kafka_2.11-2.1.0.tgz
+* Neo4j Community Server 3.4.12 https://neo4j.com/download-center/
+* Neo4j streams plugin 3.4.1 https://github.com/neo4j-contrib/neo4j-streams/releases/tag/3.4.1
 
 ## Setup
 
@@ -34,7 +35,13 @@ Change `broker.id` and `log.dirs` in `server.properties`
 
 ### Neo4j
 
-* Edit `config/neo4j.conf`, add content below:
+```
+streams.source.topic.nodes.<TOPIC_NAME>=<PATTERN>
+streams.source.topic.relationships.<TOPIC_NAME>=<PATTERN>
+streams.source.enable=<true/false, default=true>
+```
+
+* Update `config/neo4j.conf` with `<TOPIC_NAME>` and `<PATTERN>`:
 ```
 kafka.zookeeper.connect=localhost:2181
 kafka.bootstrap.servers=localhost:9092
@@ -52,6 +59,8 @@ kafka.transactional.id=
 
 streams.source.topic.nodes.user-track=action{*}
 ```
+
+Copy `neo4j-streams-3.4.1.jar` into `plugins` folder
 
 * Start neo4j server:
 ``` bash
